@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>headerlinks}}
+</head>
+<body>
+{{>navbar}}
+<div class="container_fluid  main_header">
+  <div class="row">
+    <div class="col-md-10 col-12 mx-auto ">
+         <div class="main_content">
+           <form class="temp_form">
+             <input type="text" id="cityName" placeholder="Enter city name" autocomplete="off">
+             <input type="submit" value="search" id="submitBtn">
+           </form>
+         </div> 
+         <div class="tempInformation">
+           <div class="top_layer">
+             <p id="day"></p>
+             <p id="today_data"></p>
+           </div>
+           <div class="main_layer">
+            <p id="city_name"></p>
+            <div class="middle_layer data_hide">
+              <p ><span id="temp">0</span>&deg C</p>
+              <p id="temp_status"> <i class="fa fa-cloud" aria-hidden="true"> </i> </p>
+            </div>
+           </div>
+         </div> 
+        </div>
+    </div>
+  </div>
+</div> 
+{{>footer}} 
+<script src="js/main.js"></script>
+<script>
+  const curDate=document.getElementById('day');
+  const curTime=document.getElementById('today_data');
+
+            var now= new Date(), day=now.getDay(), month=now.getMonth(), date=now.getDate(), hour=now.getHours(), mint=now.getMinutes();
+            var days =["SUN" ,"MON" ,"TUE" ,"WED" ,"THU" ,"FRI" , "SAT"];
+            var months =["JAN" ,"FEB" ,"MAR" ,"APR" ,"MAY" ,"JUN" ,"JUL" ,"AUG" ,"SEP" ,"OCT" ,"NOV" ,"DEC"];
+            var periods="AM";
+            if(hour>11){
+                periods="PM";
+                if(hour>12)hour-=12;
+            }
+            if(mint<10)mint="0"+mint;
+            
+         curDate.innerHTML = days[day]+" | "+months[month]+"  "+date;
+         curTime.innerHTML = hour+":"+mint+periods;
+</script>
+</body>
+</html>
+
